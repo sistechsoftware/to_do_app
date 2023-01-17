@@ -26,6 +26,14 @@ class ConnectionSQL {
     ''';
   }
 
+  static String updateTaskStatus(int id, String status) {
+    return '''
+      UPDATE tasks
+      SET status = '$status'
+      where id = $id;
+    ''';
+  }
+
   static String deleteTask(Task task) {
     return 'DELETE FROM tasks WHERE id = ${task.id};';
   }

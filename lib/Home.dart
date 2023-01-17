@@ -2,12 +2,10 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_speech/config/recognition_config.dart';
 import 'package:google_speech/config/recognition_config_v1.dart';
-import 'package:google_speech/config/streaming_recognition_config.dart';
 import 'package:google_speech/speech_client_authenticator.dart';
 import 'package:google_speech/speech_to_text.dart';
 import 'package:path/path.dart';
@@ -15,6 +13,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:record_windows/record_windows.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:to_do/widget/DrawerMenuWidget.dart';
 import 'package:to_do/dao/task_dao.dart';
 import 'package:to_do/record/src/types/types.dart';
 import 'models/task_model.dart';
@@ -28,9 +27,10 @@ class Home extends StatelessWidget {
     return MaterialApp(
       title: 'To Do',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal
+
       ),
-      home: const MyHomePage(title: 'To Do Application'),
+      home: const MyHomePage(title: 'Voice Recorder & Tasks',),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String _title = "";
   String _audioDirectory = "";
   String _status = "";
-  List<Task> _tasks = [];
+  final List<Task> _tasks = [];
   Task? task;
   int? selected = 3;
   String _fileName = "";
@@ -63,15 +63,12 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isPlaying = false;
   String text = '';
   bool hasAudio =  false;
-
-
+  bool taskDone = false;
 
   final player = AudioPlayer();
 
-
-
   static const countUpDuration = Duration(minutes: 0);
-  Duration duration = Duration();
+  Duration duration = const Duration();
   Timer? timer;
   bool countUp =true;
 
@@ -138,33 +135,6 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void streamingRecognize() async {
-    setState(() {
-      recognizing = true;
-    });
-    final serviceAccount = ServiceAccount.fromString(
-        (await rootBundle.loadString('assets/erudite-course-338305-3be0bd2d321b.json')));
-    final speechToText = SpeechToText.viaServiceAccount(serviceAccount);
-    final config = _getConfig();
-
-    final responseStream = speechToText.streamingRecognize(
-        StreamingRecognitionConfig(config: config, interimResults: true),
-        await _getAudioStream('C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/runner/Debug/uericlis.m4a'));
-
-    responseStream.listen((data) {
-      setState(() {
-        text = data.results.map((e) => e.alternatives.first.transcript).join('\n');
-        _description = data.results.map((e) => e.alternatives.first.transcript).join('\n');
-        recognizeFinished = true;
-        log("Response " + text);
-      });
-    }, onDone: () {
-      setState(() {
-        recognizing = false;
-      });
-    });
-  }
-
   RecognitionConfig _getConfig() => RecognitionConfig(
       encoding: AudioEncoding.FLAC,
       model: RecognitionModel.basic,
@@ -182,19 +152,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<List<int>> _getAudioContent(String name) async {
-    String path = name; //"C:/Users/ueric/AndroidStudioProjects/to_do" '/$name'; //await Utilities.getVoiceFilePath() + '/$name'; //databaseFactoryFfi.getDatabasesPath() + '/$name'; //directory.path + '/$name';
+    String path = name;
     if (!File(path).existsSync()) {
       await _copyFileFromAssets(name);
     }
     return File(path).readAsBytesSync().toList();
-  }
-
-  Future<Stream<List<int>>> _getAudioStream(String name) async {
-    final path = name; //await databaseFactoryFfi.getDatabasesPath() + '/$name';//directory.path + '/$name';
-    if (!File(path).existsSync()) {
-      await _copyFileFromAssets(name);
-    }
-    return File(path).openRead();
   }
 
   void _save(Task task) async {
@@ -215,7 +177,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> initPlatformState() async {
-    //_hasMicPermission = await recorder.hasMicPermission();
     if (!mounted) return;
     setState(() {});
   }
@@ -223,7 +184,18 @@ class _MyHomePageState extends State<MyHomePage> {
   void _update(Task task) async {
     TaskDao taskDao = TaskDao();
     try {
-      bool success  = await taskDao.updateTask(task);
+      await taskDao.updateTask(task);
+      _loadItems();
+      setState(() {});
+    } catch(error) {
+      log(error.toString());
+    }
+  }
+
+  void _updateStatus(int id, String status) async {
+    TaskDao taskDao = TaskDao();
+    try {
+      await taskDao.updateTaskStatus(id, status);
       _loadItems();
       setState(() {});
     } catch(error) {
@@ -330,24 +302,22 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
 
-
                   const SizedBox(height: 30,),
 
                   hasAudio ? Container(
                     width: 300,
                     height: 50,
                     decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Colors.lightGreen,
                       borderRadius: BorderRadius.circular(10),
                     ),
 
-                    // color: Colors.white12,
-                    child: Center(
+                  child: Center(
                       child: Row(
 
                         children: [
                           IconButton(
-                            icon: const Icon(Icons.play_arrow, color: Colors.white, size: 40),
+                            icon: const Icon(Icons.play_circle_outline_outlined, color: Colors.white, size: 40),
                             onPressed: () => {
                               if (!isPlaying)
                                 playAudio(_pathFile)
@@ -359,7 +329,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           const SizedBox(height: 20,),
 
                           IconButton(
-                            icon: const Icon(Icons.stop, color: Colors.white, size: 40),
+                            icon: const Icon(Icons.stop_circle_outlined, color: Colors.white, size: 40),
                             onPressed: () => {
                               if (isPlaying)
                                 stopAudio()
@@ -607,11 +577,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
                   const SizedBox(height: 30,),
 
-                   hasAudio ? Container(
+                   hasAudio ? Container( padding: EdgeInsets.all(5),
                      width: 300,
                      height: 50,
                      decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Colors.teal,
                       borderRadius: BorderRadius.circular(10),
                      ),
 
@@ -621,7 +591,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                         children: [
                           IconButton(
-                            icon: const Icon(Icons.play_arrow, color: Colors.white, size: 40),
+                            icon: const Icon(Icons.play_circle_outline, color: Colors.white, size: 40),
                             onPressed: () => {
                               if (!isPlaying)
                                 playAudio(task.audioDirectory)
@@ -633,7 +603,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           const SizedBox(height: 20,),
 
                           IconButton(
-                            icon: const Icon(Icons.stop, color: Colors.white, size: 40),
+                            icon: const Icon(Icons.stop_circle_outlined, color: Colors.white, size: 40),
                             onPressed: () => {
                               if (isPlaying)
                                 stopAudio()
@@ -655,7 +625,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         value: 1,
                         onChanged:(int? value) {
                           if (!_isRecording && !recognizing) {
-                            setState(() {;
+                            setState(() {
                               setStatus(value!, setState);
                             });
                           }
@@ -709,7 +679,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           status: _status,
                           title: _title,
                           audioDirectory: task.audioDirectory);
-                      _update(task!);
+                      _update(task);
                       Navigator.pop(context);
                     } else {
                       ScaffoldMessenger.of(this.context).showSnackBar(const SnackBar(content: Text('A record is running, please, wait!')));
@@ -759,33 +729,65 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        automaticallyImplyLeading: true,
+        title: Center(child: Text(widget.title, style: const TextStyle(color: Colors.white, fontSize: 30),)),
       ),
+      drawer: const DrawerMenuWidget(),
       body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.white,
+              Color.fromRGBO(178, 228, 204, 100.0),
+            ],
+          )
+        ),
         padding: const EdgeInsets.all(20),
         child: ListView.builder(
             itemCount: _tasks.length,
             itemBuilder: (context, index) {
               return ListTile(
-                title: Text(_tasks[index].title),
+                title: Text(_tasks[index].title, style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 20, fontWeight: FontWeight.w600)),
                 subtitle: Text(_tasks[index].description),
                 leading: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget> [
-                    _tasks[index].status == 'D' ?
-                    const Icon(Icons.done_rounded, color: Colors.green) :
-                    Row(
-                        children: const [
-                        ]
-                    ),
+                    _tasks[index].status != 'D' ?
+                    //const Icon(Icons.done_rounded, color: Colors.tealAccent, size: 40,) :
+                    Checkbox(
+                        value: _tasks[index].status == 'D',
+                            onChanged:(bool? value) {
+                                if (value != null && value) {
+                                  _tasks[index].status = 'D';
+                                } else {
+                                  _tasks[index].status = 'W';
+                                }
+
+                                _updateStatus(_tasks[index].id!, _tasks[index].status);
+
+                                setState(() {});
+                            },)
+                    :
+                    const Icon(Icons.done_rounded, color: Colors.teal, size: 40,)
                   ],
                 ),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget> [
+                    Center(child: Text(_tasks[index].status == 'D' ? 'Done' : _tasks[index].status == 'W' ? 'Waiting' : 'Running', style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: _tasks[index].status == 'D' ? Colors.teal : Colors.red
+                    )),),
+
+
+                  const SizedBox(width: 200),
+
                   _tasks[index].audioDirectory != "" ?
                     IconButton(
-                    icon: !isPlaying ? const Icon(Icons.play_circle) : const Icon(Icons.stop_circle_rounded),
+                    icon: !isPlaying ? const Icon(Icons.play_circle, size: 30,) : const Icon(Icons.stop_circle_rounded, size: 30),
                       onPressed: () {
                         if (isPlaying) {
                           stopAudio();
@@ -794,10 +796,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         }
                       }
                     )
-                    : const SizedBox(height: 10, width: 10,),
+                    : const SizedBox(height: 40, width: 40,),
                     const SizedBox(width: 40,),
                     IconButton(
-                      icon: const Icon(Icons.edit),
+                      icon: const Icon(Icons.edit, size: 30),
                       onPressed: () {
                         Task t = _tasks.elementAt(index);
                         updateTask(t);
@@ -805,7 +807,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     const SizedBox(width: 20,),
                     IconButton(
-                      icon: const Icon(Icons.delete),
+                      icon: const Icon(Icons.delete, size: 30),
                       color: Colors.red,
                       onPressed: () {
                            Task t = _tasks.elementAt(index);
@@ -890,7 +892,7 @@ class _MyHomePageState extends State<MyHomePage> {
       duration = countUpDuration);
     } else{
       setState(() =>
-      duration = Duration());
+      duration = const Duration());
     }
   }
 
@@ -904,11 +906,10 @@ class Utilities {
 
     final String path = await databaseFactoryFfi.getDatabasesPath();
     if (path == null) {
-      throw Exception(
-          'Unable to get application documents directory');
+      throw Exception('Unable to get application documents directory');
     }
 
-    Directory appDocumentsDirectory = await Directory(path); // 1
+    Directory appDocumentsDirectory = Directory(path); // 1
     String appDocumentsPath = appDocumentsDirectory.path; // 2
     String filePath = appDocumentsPath; // 3
 

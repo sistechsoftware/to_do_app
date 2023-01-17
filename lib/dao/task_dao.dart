@@ -25,6 +25,17 @@ class TaskDao {
     }
   }
 
+  Future<bool> updateTaskStatus(int id, String status) async {
+    try {
+      Database db = await _getDatabase();
+      int lines = await db.rawUpdate(ConnectionSQL.updateTaskStatus(id, status));
+
+      return lines > 0;
+    } catch(error) {
+      throw Exception();
+    }
+  }
+
   Future<bool> updateTask(Task task) async {
     try {
       Database db = await _getDatabase();

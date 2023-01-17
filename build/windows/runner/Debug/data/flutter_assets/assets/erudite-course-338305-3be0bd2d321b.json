@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "erudite-course-338305",
+  "private_key_id": "3be0bd2d321bba9adba065c98bc2832aab3b35cf",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCwla4GDoYuqZLO\nmrXARhMUEFZLasdvzK7mMIWDJRfW9KhpF5hUMVPzLl598jdf8m15vlJKhI1UtXY7\nzjpSifVis6os3mgsDkK87Sn4TbGn/xaDK6nyjjFSv5f/fUCPpD1pYH/C3H1pEeXS\nWu8n9/13YgYDC9dKkYL/YXIoXjfAbph1JFdXGVGyVQJoXuArNDXelXeHpxqCn6+i\nhYX2TPcYfUn/C++NotTC/tR9IWHNTHkf8gjGvIPbzKr4AbXHkHP8o3qaT/J6WV8p\nZbROcnsFl+6LSNX1QETvtD+mh9dFyBQ41dW2HXnbkFIf5Pa/FUIB/+oiFfF5F5iD\n5bfhOjjjAgMBAAECggEAF23stpoDvLo8I9SMK/RAQMfAI2aKCq/uPtWOSW3JAXjZ\nxYPfbsBSwq/S0sQqC713QBF8Cq4WsHgZNWsx+tSaLdvnxudFjB7iRP30tSDd4wvp\n+UJ4XJn4OmH4cWo1gDmK+mnW2cx2iVPaGfR9yeBSDZ6AbLQL/zVaW7catfd2Tz5E\nb9hJXK0s8Ihc2EF/iRLQlQs0vi+gdJWol/T5uzqSgOTVPNTckcWQmbjp3hVYfu9Y\nAlDoOk2TCuIOXrnflBOSQ9l/KM5WXOcH9BGXM9RxNu5T+xnZAV5v+wowLcmbyKVB\nS8e9DAXN/cxTd8POyQBFVZ9FsrgdY1mbEJNyOUvSAQKBgQDyDYkUhzqfXeibxeYm\nD1d+PoRDrAvwCdJJ0uj38llBJREzg5WzqNRZYROF2e0S2KTIFumWYhYBcRiezrEz\nsrNrJwV51nNz/aljeW1lMyiYnceV+8QFdDAUINO35c9lmnHNL+36P9fUad85pvQU\ni7PCgzi+C+kdkB5TRNeZRRAuAQKBgQC6wnBJVYsgVACbqxKl7N1jzCziB/ZLe7Lp\nJEfKOuEJ4wOR83GZmVi5QgylWsoC1/wVnTWmxsCGUaWC23OuOqGVhK1xu/EgfbxW\ncxXu0uAacwPEMn3oVHKk6E8HYM8+XJjja/jVtqIl4BWZAc1CVGHMGkPUIiIqykCy\nGOZheh1u4wKBgQCnM/BoTM2S/tTKnhbQXbKrk1XcRUFty+sGcfnaJP/Av3E1a4UC\nuPIO178brCFW7m5NhX5QEmtvDYfbU54Wvy+vKiJfOmNAUY4sF9oYmRFG817GXUbY\nGZ2ImfCGTOpKHjjUa3Jxdp6JraS0d36Nnr9K80hEB4g9kqtQC/L+fjWiAQKBgAje\n/YhuOMqTUugSCzO4eZeo9iTSbf+N46SxZXuUqmXW06+WGbpLD2zVV1ZvZpMWAVJh\ngk/mtvRqYmtB00/eVxiMEdUKMVzyvAR7OPp8J8r51Z73KwXjJQLySfa2wYFb0qNS\n2KIGJ9OWvk/jRwW0jmSshrZH3Mmdi88p4Z+VtlozAoGAei/knXO5p8eWD6GCFMfm\nKvceL516lqSafSq0/WuNE3MssVB+W1ZjCnBSLlDa55bFcSVdEiujrbirrN4ILIUO\nohilG8qNxachKNiwF6vJ6bu+BULqmgfSJJ9wrLyRQUNWWeUzlQ+wVQQvwlfxZ+rm\nPwIPFF/bmiNwte0jxTq48Qk=\n-----END PRIVATE KEY-----\n",
+  "client_email": "transcribe@erudite-course-338305.iam.gserviceaccount.com",
+  "client_id": "113016749767062044538",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/transcribe%40erudite-course-338305.iam.gserviceaccount.com"
+}

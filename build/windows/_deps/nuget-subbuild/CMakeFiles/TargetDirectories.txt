@@ -1,0 +1,3 @@
+C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/nuget-populate.dir
+C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/ALL_BUILD.dir
+C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/ZERO_CHECK.dir

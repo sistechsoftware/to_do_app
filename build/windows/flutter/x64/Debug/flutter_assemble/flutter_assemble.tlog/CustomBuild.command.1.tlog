@@ -1,0 +1,28 @@
+^C:\USERS\UERIC\ANDROIDSTUDIOPROJECTS\TO_DO\BUILD\WINDOWS\CMAKEFILES\F915C5CA477DD3FD44DD29720F03A811\FLUTTER_WINDOWS.DLL.RULE
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=C:\flutter PROJECT_DIR=C:\Users\ueric\AndroidStudioProjects\to_do FLUTTER_ROOT=C:\flutter FLUTTER_EPHEMERAL_DIR=C:\Users\ueric\AndroidStudioProjects\to_do\windows\flutter\ephemeral PROJECT_DIR=C:\Users\ueric\AndroidStudioProjects\to_do FLUTTER_TARGET=C:\Users\ueric\AndroidStudioProjects\to_do\lib\main.dart DART_DEFINES=Zmx1dHRlci5pbnNwZWN0b3Iuc3RydWN0dXJlZEVycm9ycz10cnVl,RkxVVFRFUl9XRUJfQVVUT19ERVRFQ1Q9dHJ1ZQ== DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=C:\Users\ueric\AndroidStudioProjects\to_do\.dart_tool\package_config.json C:/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\UERIC\ANDROIDSTUDIOPROJECTS\TO_DO\BUILD\WINDOWS\CMAKEFILES\35AFF810AE1B2EB834DECB5CE34B0222\FLUTTER_ASSEMBLE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\UERIC\ANDROIDSTUDIOPROJECTS\TO_DO\WINDOWS\FLUTTER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/ueric/AndroidStudioProjects/to_do/windows -BC:/Users/ueric/AndroidStudioProjects/to_do/build/windows --check-stamp-file C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/flutter/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

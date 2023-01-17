@@ -1,0 +1,49 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/nuget-populate"
+		},
+		{
+			"file" : "C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/f9eda68b19b0269a26eea5bf2476c0fc/nuget-populate.rule"
+		},
+		{
+			"file" : "C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/a61abe69499b44537fbcb0fdbd91c617/nuget-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-copyfile.rule"
+		},
+		{
+			"file" : "C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"nuget-populate"
+		],
+		"name" : "nuget-populate"
+	}
+}

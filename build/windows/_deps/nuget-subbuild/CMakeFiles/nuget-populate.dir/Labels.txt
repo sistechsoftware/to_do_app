@@ -1,0 +1,15 @@
+# Target labels
+ nuget-populate
+# Source files and their labels
+C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/nuget-populate
+C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/f9eda68b19b0269a26eea5bf2476c0fc/nuget-populate.rule
+C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/a61abe69499b44537fbcb0fdbd91c617/nuget-populate-complete.rule
+C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-build.rule
+C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-configure.rule
+C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-copyfile.rule
+C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-download.rule
+C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-install.rule
+C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-mkdir.rule
+C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-patch.rule
+C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-test.rule
+C:/Users/ueric/AndroidStudioProjects/to_do/build/windows/_deps/nuget-subbuild/CMakeFiles/375ef2a3c133e28aa84a9a7df5dda6a0/nuget-populate-update.rule
